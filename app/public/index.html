@@ -13,13 +13,13 @@
       <h1>Currency Converter</h1>
     </header>
 
-    <div id="from-euro-converter">
+    <!-- <div id="from-euro-converter">
       <form v-on:submit.prevent="convertCurrencyFromEuros">
-        <label for="first-currency">Enter amount in Euros to convert:</label>
-        <input type="number" id="first-currency" v-model.number="amount">
+        <label for="euros-amount">Enter amount in Euros to convert:</label>
+        <input type="number" id="euros-amount" v-model.number="amount">
 
-        <label for="second-currency">Select exchange currency:</label>
-        <select id="second-currency" v-model.number="rate">
+        <label for="from-exchange-currency">Select exchange currency:</label>
+        <select id="from-exchange-currency" v-model.number="rate">
           <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
         </select>
         <input type="submit" value="Convert">
@@ -27,22 +27,45 @@
       <p>Result: {{fromEuroConversion}}</p>
     </div>
 
-    <br>
+    <br> -->
 
     <div id="to-euro-converter">
       <form v-on:submit.prevent="convertCurrencyToEuros">
 
-        <label for="second-currency">Select exchange currency:</label>
-        <select id="second-currency" v-model.number="rate">
+        <label for="exchange-currency">Select exchange currency:</label>
+        <select id="exchange-currency" v-model.number="firstCurrency">
           <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
         </select>
 
-        <label for="first-currency">Amount to convert:</label>
-        <input type="number" id="first-currency" v-model.number="amount">
+        <label for="amount-to-convert">Amount to convert:</label>
+        <input type="number" id="amount-to-convert" v-model.number="amount">
 
         <input type="submit" value="Convert">
       </form>
       <p>Result: {{toEuroConversion}} Euros</p>
+    </div>
+
+    <br>
+
+    <div id="non-base-converter">
+      <form v-on:submit.prevent="convertNonBaseCurrencies">
+
+        <label for="first-currency">Select  currency to convert:</label>
+        <select id="first-currency" v-model.number="firstCurrency">
+          <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
+        </select>
+
+        <label for="convert-amount">Amount to convert:</label>
+        <input type="number" id="convert-amount" v-model.number="amount">
+
+        <label for="second-currency">Select exchange currency:</label>
+        <select id="second-currency" v-model.number="secondCurrency">
+          <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
+        </select>
+
+        <input type="submit" value="Convert">
+      </form>
+      <p>Result: {{fromEuroConversion}}</p>
     </div>
 
     <br>
