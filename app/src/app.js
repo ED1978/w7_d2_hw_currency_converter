@@ -11,7 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
       firstCurrency: 0,
       secondCurrency: 0,
       fromEuroConversion: 0,
-      toEuroConversion: 0
+      toEuroConversion: 0,
+      roundedConversion: 0
     },
 
     mounted(){
@@ -32,9 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const conversion = this.amount / this.firstCurrency;
         this.toEuroConversion = conversion;
       },
+      round: function(){
+        const rounded = this.fromEuroConversion.toFixed(2);
+        this.roundedConversion = rounded;
+      },
       convertNonBaseCurrencies: function(){
         this.convertCurrencyToEuros();
         this.convertCurrencyFromEuros();
+        this.round()
       }
     }
 

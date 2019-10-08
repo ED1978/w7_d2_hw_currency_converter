@@ -29,7 +29,8 @@
 
     <br> -->
 
-    <div id="to-euro-converter">
+    <!-- <div id="to-euro-converter">
+      <h2>Convert to Euros</h2>
       <form v-on:submit.prevent="convertCurrencyToEuros">
 
         <label for="exchange-currency">Select exchange currency:</label>
@@ -45,13 +46,14 @@
       <p>Result: {{toEuroConversion}} Euros</p>
     </div>
 
-    <br>
+    <br> -->
 
     <div id="non-base-converter">
       <form v-on:submit.prevent="convertNonBaseCurrencies">
 
         <label for="first-currency">Select  currency to convert:</label>
         <select id="first-currency" v-model.number="firstCurrency">
+          <option value="1">EUR</option>
           <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
         </select>
 
@@ -60,17 +62,20 @@
 
         <label for="second-currency">Select exchange currency:</label>
         <select id="second-currency" v-model.number="secondCurrency">
+          <option value="1">EUR</option>
           <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
         </select>
 
         <input type="submit" value="Convert">
       </form>
-      <p>Result: {{fromEuroConversion}}</p>
+      <p>Result: {{roundedConversion}}</p>
     </div>
 
     <br>
 
     <div id="exchange-rates">
+      <h2>Current exchange rates</h2>
+      <h3>1 Euro =</h3>
       <ul>
         <li v-for="(rate, country) in exchangeRates.rates">
           {{country}}: {{rate}}
