@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Currency Converter</title>
-    <script src="./js/bundle.js"></script>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <title>Currency Converter</title>
+  <script src="./js/bundle.js"></script>
+</head>
+<body>
 
-    <div id="app">
+  <div id="app">
+    <header>
       <h1>Currency Converter</h1>
-
+    </header>
+    <div>
+      <ul id="exchange-rates">
+        <li v-for="(rate, country) in exchangeRates.rates">
+          {{country}}: {{rate}}
+        </li>
+      </ul>
     </div>
 
-  </body>
+
+  </div>
+
+</body>
 </html>

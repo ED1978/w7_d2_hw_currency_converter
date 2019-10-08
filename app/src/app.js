@@ -6,18 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     el: "#app",
 
     data: {
-      currencies: []
+      exchangeRates: []
     },
 
     mounted(){
-      this.fetchCurrencies();
+      this.fetchExchangeRates();
     },
 
     methods: {
-      fetchCurrencies: function(){
+      fetchExchangeRates: function(){
         const request = fetch("https://api.exchangeratesapi.io/latest")
         .then(response => response.json())
-        .then(data => this.currencies = data);
+        .then(data => this.exchangeRates = data);
       }
     }
 
