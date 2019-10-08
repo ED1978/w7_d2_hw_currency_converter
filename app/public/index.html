@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Currency Converter</title>
   <script src="./js/bundle.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -11,8 +12,43 @@
     <header>
       <h1>Currency Converter</h1>
     </header>
-    <div>
-      <ul id="exchange-rates">
+
+    <div id="from-euro-converter">
+      <form v-on:submit.prevent="convertCurrencyFromEuros">
+        <label for="first-currency">Enter amount in Euros to convert:</label>
+        <input type="number" id="first-currency" v-model.number="amount">
+
+        <label for="second-currency">Select exchange currency:</label>
+        <select id="second-currency" v-model.number="rate">
+          <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
+        </select>
+        <input type="submit" value="Convert">
+      </form>
+      <p>Result: {{fromEuroConversion}}</p>
+    </div>
+
+    <br>
+
+    <div id="to-euro-converter">
+      <form v-on:submit.prevent="convertCurrencyToEuros">
+
+        <label for="second-currency">Select exchange currency:</label>
+        <select id="second-currency" v-model.number="rate">
+          <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
+        </select>
+
+        <label for="first-currency">Amount to convert:</label>
+        <input type="number" id="first-currency" v-model.number="amount">
+
+        <input type="submit" value="Convert">
+      </form>
+      <p>Result: {{toEuroConversion}} Euros</p>
+    </div>
+
+    <br>
+
+    <div id="exchange-rates">
+      <ul>
         <li v-for="(rate, country) in exchangeRates.rates">
           {{country}}: {{rate}}
         </li>
