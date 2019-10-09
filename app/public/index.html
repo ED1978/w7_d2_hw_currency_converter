@@ -54,7 +54,7 @@
         <label for="first-currency">Select  currency to convert:</label>
         <select id="first-currency" v-model.number="firstCurrency">
           <option value="1">EUR</option>
-          <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
+          <option v-for="(rate, country) in exchangeRates.rates" :value="rate">{{country}}</option>
         </select>
 
         <label for="convert-amount">Amount to convert:</label>
@@ -63,7 +63,7 @@
         <label for="second-currency">Select exchange currency:</label>
         <select id="second-currency" v-model.number="secondCurrency">
           <option value="1">EUR</option>
-          <option v-for="(rate, country) in exchangeRates.rates">{{rate}}</option>
+          <option v-for="(rate, country) in exchangeRates.rates" :value="rate">{{country}}</option>
         </select>
 
         <input type="submit" value="Convert">
